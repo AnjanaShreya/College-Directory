@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="CSS/navbar.css"> 
+    <title>Student Dashboard</title>
+</head>
+<body>
+    <!-- Global Navigation Bar -->
+    <nav class="navbar navbar-inverse navbar-global navbar-fixed-top">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="#">Student Dashboard</a>
+            </div>
+            <div id="navbar" class="collapse navbar-collapse">
+                <ul class="nav navbar-nav navbar-user navbar-right">
+                    <!-- <li><a href="#"><span class="glyphicon glyphicon-user"></span> Santhosh Giridara</a></li> -->
+                    <li><a href="index.html"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Sidebar Navigation -->
+    <nav class="navbar-primary">
+        <a href="#" class="btn-expand-collapse" onclick="toggleSidebar()"><span class="glyphicon glyphicon-menu-left"></span></a>
+        <ul class="navbar-primary-menu">
+            <li>
+                <a href="#" onclick="showSection('Dashboard')"><span class="glyphicon glyphicon-list-alt"></span><span class="nav-label">Dashboard</span></a>
+                <a href="#" onclick="showSection('Grades')"><span class="glyphicon glyphicon-education"></span><span class="nav-label">Grades</span></a>
+                <a href="#" onclick="showSection('Search')"><span class="glyphicon glyphicon-search"></span><span class="nav-label">Search</span></a>
+                <a href="#" onclick="showSection('Profile')"><span class="glyphicon glyphicon-user"></span><span class="nav-label">Profile</span></a>
+            </li>
+        </ul>
+    </nav>
+
+    <!-- Main Content Sections -->
+    <div class="main-content">
+        <!-- <div id="Dashboard" class="content-section">Welcome to the Dashboard!</div> -->
+        <div id="Dashboard" class="content-section">
+
+            <h2>Notifications</h2>
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>Message</th>
+                        <th>Created At</th>
+                    </tr>
+                </thead>
+                <tbody id="notificationTableBody">
+                    <!-- Notifications will be displayed here -->
+                </tbody>
+            </table>
+
+            <!-- <h2>Welcome to the Dashboard!</h2>
+            <h3>Class Schedule and Attendance</h3>
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>Subject</th>
+                        <th>Class Timing</th>
+                        <th>Attendance</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Mathematics</td>
+                        <td>09:00 AM - 10:30 AM</td>
+                        <td>85%</td>
+                    </tr>
+                    <tr>
+                        <td>Physics</td>
+                        <td>11:00 AM - 12:30 PM</td>
+                        <td>90%</td>
+                    </tr>
+                    <tr>
+                        <td>Chemistry</td>
+                        <td>01:00 PM - 02:30 PM</td>
+                        <td>88%</td>
+                    </tr>
+                    <tr>
+                        <td>Computer Science</td>
+                        <td>03:00 PM - 04:30 PM</td>
+                        <td>92%</td>
+                    </tr>
+                </tbody>
+            </table> -->
+
+            <h3>Assignments and Deadlines</h3>
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>Assignment</th>
+                        <th>Subject</th>
+                        <th>Deadline</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Math Homework 1</td>
+                        <td>Mathematics</td>
+                        <td>2024-09-30</td>
+                    </tr>
+                    <tr>
+                        <td>Physics Lab Report</td>
+                        <td>Physics</td>
+                        <td>2024-10-05</td>
+                    </tr>
+                    <tr>
+                        <td>Chemistry Project</td>
+                        <td>Chemistry</td>
+                        <td>2024-10-10</td>
+                    </tr>
+                    <tr>
+                        <td>Computer Science Presentation</td>
+                        <td>Computer Science</td>
+                        <td>2024-10-15</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>  
+        <div id="Grades" class="content-section" style="display:none;">Here are your Grades.</div>
+        <!-- <div id="Search" class="content-section" style="display:none;">Search for other students.</div> -->
+        <div id="Search" class="content-section" style="display:none;">
+            <h2>Search for Students and Faculty</h2>
+            
+            <h3>Faculty</h3>
+            <table id="facultyList" class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Subject</th>
+                        <th>Email</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Faculty rows will be added here dynamically -->
+                </tbody>
+            </table>
+            
+            <h3>Students</h3>
+            <table id="studentList" class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Course</th>
+                        <th>Email</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Student rows will be added here dynamically -->
+                </tbody>
+            </table>
+        </div>        
+        <div id="Profile" class="content-section" style="display:none;">Your profile information will be displayed here.</div>
+    </div>
+
+    <!-- Include custom JavaScript -->
+    <script src="JS/navbar.js"></script>
+    <script src="JS/students.js"></script>
+    <script>
+        // Function to show the specified section
+        function showSection(sectionId) {
+            // Hide all sections
+            const sections = document.querySelectorAll('.content-section');
+            sections.forEach(section => {
+                section.style.display = 'none';
+            });
+            // Show the selected section
+            document.getElementById(sectionId).style.display = 'block';
+        }
+
+        // Display the Dashboard by default when the page loads
+        window.onload = function() {
+            showSection('Dashboard');
+        };
+    </script>
+</body>
+</html>

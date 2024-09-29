@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="CSS/navbar.css"> 
+    <link rel="stylesheet" href="CSS/admin.css"> 
+    <title>Admin Dashboard</title>
+</head>
+<body>
+    <!-- Global Navigation Bar -->
+    <nav class="navbar navbar-inverse navbar-global navbar-fixed-top">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="#">Admin Dashboard</a>
+            </div>
+            <div id="navbar" class="collapse navbar-collapse">
+                <ul class="nav navbar-nav navbar-user navbar-right">
+                    <!-- <li><a href="#"><span class="glyphicon glyphicon-user"></span> Santhosh Giridara</a></li> -->
+                    <li><a href="index.html"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Sidebar Navigation -->
+    <nav class="navbar-primary">
+        <a href="#" class="btn-expand-collapse" onclick="toggleSidebar()"><span class="glyphicon glyphicon-menu-left"></span></a>
+        <ul class="navbar-primary-menu">
+            <li>
+                <a href="#" onclick="showSection('Dashboard')"><span class="glyphicon glyphicon-list-alt"></span><span class="nav-label">Dashboard</span></a>
+                <a href="#" onclick="showSection('Faculty')"><span class="glyphicon glyphicon-education"></span><span class="nav-label">Faculty</span></a>
+                <a href="#" onclick="showSection('Student')"><span class="glyphicon glyphicon-user"></span><span class="nav-label">Students</span></a>
+                <a href="#" onclick="showSection('Profile')"><span class="glyphicon glyphicon-cog"></span><span class="nav-label">Settings</span></a>
+            </li>
+        </ul>
+    </nav>
+
+    <!-- Main Content Sections -->
+    <div class="main-content">
+        <div id="Dashboard" class="content-section" style="display:none;">
+            <div>
+                <select id="userRole" class="input-dropdown" style="display: none;">
+                    <option value="faculty">Faculty</option>
+                    <option value="student">Student</option>
+                </select>
+                <input type="text" id="notificationMessage" placeholder="Enter notification message" class="input input-design" />
+                <button onclick="addNotification()" class="button-design">Add Notification</button>
+            </div>
+            
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>Message</th>
+                        <th>Created At</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody id="notificationTableBody">
+                    <!-- Notifications will be displayed here -->
+                </tbody>
+            </table>            
+        </div>
+        <div id="Faculty" class="content-section" style="display:none;">
+            <h2>Faculty Management</h2>
+
+            <!-- Form to add a faculty member -->
+            <div class="faculty-form">
+                <input type="text" id="facultyName" placeholder="Faculty Name" required>
+                <input type="text" id="facultySubject" placeholder="Subject" required>
+                <input type="email" id="facultyEmail" placeholder="Email" required>
+                <button onclick="addFaculty()">Add Faculty</button>
+            </div>
+    
+            <!-- Faculty Table -->
+            <table id="facultyTable" class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Subject</th>
+                        <th>Email</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Faculty rows will be added here dynamically -->
+                </tbody>
+            </table>
+        </div>
+        <div id="Student" class="content-section" style="display:none;">
+            <h2>Student Management</h2>
+
+        <!-- Form to add a student -->
+        <div class="student-form">
+            <input type="text" id="studentName" placeholder="Student Name" required>
+            <input type="text" id="studentCourse" placeholder="Course" required>
+            <input type="email" id="studentEmail" placeholder="Email" required>
+            <button onclick="addStudent()">Add Student</button>
+        </div>
+
+        <!-- Student Table -->
+        <table id="studentTable" class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Course</th>
+                    <th>Email</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Student rows will be added here dynamically -->
+            </tbody>
+        </table>
+        </div>
+        <!-- <div id="Profile" class="content-section" style="display:none;"></div> -->
+        <div id="Profile" class="content-section" style="display:none;">
+            <h2>Update Profile</h2>
+            <input type="text" id="profileName" placeholder="Name" required>
+            <div>
+                <label>Gender:</label>
+                <input type="radio" name="gender" value="Male" required> Male
+                <input type="radio" name="gender" value="Female" required> Female
+            </div>
+            <input type="email" id="profileEmail" placeholder="Email" required>
+            <input type="text" id="profilePhone" placeholder="Phone" required>
+            <input type="file" id="profilePhoto" accept="image/*">
+            <button onclick="updateProfile()">Update Profile</button>
+        </div>
+                  
+    </div>
+
+    <!-- Include custom JavaScript -->
+    <script src="JS/navbar.js"></script>
+    <script src="JS/admin.js"></script>
+    <script>
+        // Function to show the specified section
+        function showSection(sectionId) {
+            // Hide all sections
+            const sections = document.querySelectorAll('.content-section');
+            sections.forEach(section => {
+                section.style.display = 'none';
+            });
+            // Show the selected section
+            document.getElementById(sectionId).style.display = 'block';
+        }
+
+        // Display the Dashboard by default when the page loads
+        window.onload = function() {
+            showSection('Dashboard');
+        };
+    </script>
+</body>
+</html>

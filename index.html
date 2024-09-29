@@ -3,9 +3,37 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>College Directory</title>
+    <link rel="stylesheet" href="CSS/login.css"> 
 </head>
 <body>
-    
+    <div class="form-structor">
+        <div class="signup">
+            <h2 class="form-title" id="signup"><span>or</span>Sign up</h2>
+            <div class="form-holder">
+                <select name="options" id="options" class="dropdown-bar input" style="height: 45px;">
+                    <option value="Student" class="input-dropdown">Student</option>
+                    <option value="Faculty" class="input-dropdown">Faculty</option>
+                    <option value="Administrator" class="input-dropdown">Administrator</option>
+                </select>
+                <input type="text" id="signupName" class="input" placeholder="Name" />
+                <input type="email" id="signupEmail" class="input" placeholder="Email" />
+                <input type="password" id="signupPassword" class="input" placeholder="Password" />
+            </div>
+            <button class="submit-btn" onclick="register()">Sign up</button>
+        </div>
+        <div class="login slide-up">
+            <div class="center">
+                <h2 class="form-title" id="login"><span>or</span>Log in</h2>
+                <div class="form-holder">
+                    <input type="email" id="loginEmail" class="input" placeholder="Email" />
+                    <input type="password" id="loginPassword" class="input" placeholder="Password" />
+                </div>
+                <button class="submit-btn" onclick="login()">Log in</button>
+                <p>Forgot Password?</p>
+            </div>
+        </div>
+    </div>
+    <script src="JS/login.js"></script>
 </body>
 </html>

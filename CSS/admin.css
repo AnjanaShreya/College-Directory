@@ -1,0 +1,47 @@
+body {
+	font-family: "Fira Sans", Helvetica, Arial, sans-serif;
+    margin: 20px;
+}
+.content-section {
+    margin-top: 20px;
+}
+.faculty-form {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+.faculty-form input {
+    padding: 5px;
+    width: 200px;
+}
+
+.remove-btn {
+    background-color: red;
+    color: white;
+    border: none;
+    padding: 5px;
+    cursor: pointer;
+    border-radius: 4px;
+}
+
+.student-form {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+.student-form input {
+    padding: 5px;
+    width: 200px;
+}
+.button-design {
+    height: 50px;
+    width: 200px;
+}
+.input-design {
+    width: 500px;
+    height: 50px;
+}
+.input-design, .button-design {
+    border-radius: 10px;
+    margin-bottom: 45px;
+}
